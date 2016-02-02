@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import MagicalRecord
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,8 +16,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
+    {
         // Override point for customization after application launch.
+
+        MagicalRecord.setupCoreDataStack()
+
+        
+        if window == nil
+        {
+            window = UIWindow(frame: UIScreen.mainScreen().bounds)
+            window?.makeKeyAndVisible()
+            
+        }
+
+        window?.backgroundColor = UIColor.whiteColor()
+        
+        let vc = WAWeatherCollectionVC()
+        window?.rootViewController = vc
+        
+        
+
+        
         return true
     }
 
